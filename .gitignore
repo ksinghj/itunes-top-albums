@@ -1,4 +1,4 @@
-/build
-/node_modules
-/.vscode
+build/
+node_modules/
+.vscode/
 yarn-error.log
