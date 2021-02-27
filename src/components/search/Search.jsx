@@ -3,7 +3,7 @@ import styles from './search.module.scss'
 
 import { TopAlbumsContext } from '../../state/topAlbumsContext'
 
-export default ({ className }) => {
+const Search = ({ className }) => {
   const { setSearchTerm } = useContext(TopAlbumsContext)
 
   const handleChange = e => {
@@ -24,3 +24,5 @@ export default ({ className }) => {
     </div>
   )
 }
+
+export default Search

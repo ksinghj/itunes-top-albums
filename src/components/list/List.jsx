@@ -6,7 +6,7 @@ import ListItem from '../list-item/ListItem'
 
 import { TopAlbumsContext } from '../../state/topAlbumsContext'
 
-export default ({ className }) => {
+const List = ({ className }) => {
   const { albumsList, searchTerm } = useContext(TopAlbumsContext)
 
   // eslint-disable-next-line no-unused-vars
@@ -49,3 +49,5 @@ export default ({ className }) => {
     </div>
   )
 }
+
+export default List

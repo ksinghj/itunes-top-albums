@@ -3,9 +3,9 @@ import styles from './top.module.scss'
 
 import Search from '../search/Search'
 
-import logo from '../../assets/ampersand-logo.png'
+import logo from '../../assets/apple-music-logo.svg'
 
-export default ({ className }) => (
+const Top = ({ className }) => (
   <div className={`${className} ${styles.container}`}>
     <div className={styles.imgContainer}>
       <img src={logo} alt="company logo" />
@@ -14,3 +14,5 @@ export default ({ className }) => (
     <Search />
   </div>
 )
+
+export default Top

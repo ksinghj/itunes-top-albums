@@ -3,11 +3,10 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import styles from './list-item.module.scss'
 
 import { TopAlbumsContext } from '../../state/topAlbumsContext'
-import useFetch from '../../hooks/useFetch'
 
 import placeholder from '../../assets/top100UK.png'
 
-export default ({ rank, name, artist, imgSrc }) => {
+const ListItem = ({ rank, name, artist, imgSrc }) => {
   const { searchTerm } = useContext(TopAlbumsContext)
   const [visible, setVisible] = useState(false)
   const [artistDetails, setArtistDetails] = useState({
@@ -19,21 +18,26 @@ export default ({ rank, name, artist, imgSrc }) => {
   const getArtistDetails = async () => {
     const formattedArtistName = artist.replace(/ /g, '_') // replace spaces w _'s for api
     const URL = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${formattedArtistName}`
-    const res = await useFetch(URL)
-    if (res.artists == null) {
-      setArtistDetails({
-        genre: 'No data',
-        from: 'No data',
-        bio: 'No data, sorry.',
+    fetch(URL)
+      .then(data => data.json())
+      .then(res => {
+        if (res.artists == null) {
+          setArtistDetails({
+            genre: 'No data',
+            from: 'No data',
+            bio: 'No data, sorry.',
+          })
+          return
+        }
+        const artistsData = res.artists[0]
+        if (artistsData) {
+          setArtistDetails({
+            genre: artistsData.strGenre,
+            from: artistsData.strCountry,
+            bio: artistsData.strBiographyEN,
+          })
+        }
       })
-      return
-    }
-    const artistsData = await res.artists[0]
-    setArtistDetails({
-      genre: artistsData.strGenre,
-      from: artistsData.strCountry,
-      bio: artistsData.strBiographyEN,
-    })
   }
 
   useEffect(() => {
@@ -110,3 +114,5 @@ export default ({ rank, name, artist, imgSrc }) => {
     </>
   )
 }
+
+export default ListItem

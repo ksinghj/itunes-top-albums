@@ -1,7 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
 
-import useFetch from '../hooks/useFetch'
-
 export const TopAlbumsContext = createContext()
 
 const TopAlbumsProvider = ({ children }) => {
@@ -12,9 +10,10 @@ const TopAlbumsProvider = ({ children }) => {
 
   useEffect(() => {
     const abortController = new AbortController() // allow us to cancel the request
-    useFetch(URL, {
+    fetch(URL, {
       signal: abortController.signal,
     })
+      .then(data => data.json())
       .then(
         res =>
           // console.log(res.feed.entry)
