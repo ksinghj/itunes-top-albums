@@ -1,0 +1,100 @@
+@import '../../styles/variables.scss';
+@import '../../styles/media-queries.scss';
+
+.containerRow {
+  display: flex;
+  flex-direction: row;
+  border: 0px solid $grey;
+  border-bottom-width: 1px;
+  padding: 0.5em 0;
+  justify-content: space-between;
+  z-index: 2;
+
+  & button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:last-of-type {
+      margin: 0 1em;
+      margin-right: 1em; // avoid scrollbars
+      white-space: nowrap;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  border: 0px solid $grey;
+  border-bottom-width: 1px;
+  padding: 0.5em 0;
+  z-index: 2;
+}
+
+.title {
+  margin-left: 1em;
+  line-height: 30px; // center align with row
+  text-align: left;
+  font-size: 15px;
+
+  & span {
+    margin-left: 0.3em;
+  }
+}
+
+.rank {
+  margin: 0 1em 0 0.2em;
+}
+
+.imgContainer {
+  height: 50px;
+  margin: 0.5em 0;
+
+  & img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'genre about about'
+    'from about about';
+  z-index: 1;
+  padding-right: 1em; // avoid scrollbars
+}
+
+.genre {
+  grid-area: genre;
+  max-width: 85%;
+}
+
+.from {
+  grid-area: from;
+  max-width: 85%;
+}
+
+.about {
+  grid-area: about;
+}
+
+.content__header {
+  color: $grey;
+}
+
+@include md-up {
+  .title {
+    font-size: 18px;
+  }
+}
+
+@include lg-up {
+  .title {
+    font-size: 20px;
+  }
+}

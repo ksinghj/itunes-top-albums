@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+// @import '../../styles/media-queries.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+}
+
+.imgContainer {
+  max-width: 150px;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.header {
+  color: $red;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}

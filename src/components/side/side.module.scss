@@ -1,0 +1,11 @@
+.container {
+  padding: 2em 2em 2em 0;
+}
+
+.imgContainer {
+  width: 20vw;
+
+  & img {
+    width: 100%;
+  }
+}

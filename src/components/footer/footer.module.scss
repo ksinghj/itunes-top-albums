@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+// @import '../../styles/media-queries.scss';
+
+$img-size: 50px;
+
+.container {
+  grid-column: 1/-1;
+  margin: 1em 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+}
+
+.footer__text {
+  text-align: center;
+}
+
+.footer__img {
+  width: $img-size;
+  height: $img-size;
+  margin: 0 auto;
+}

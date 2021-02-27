@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+@import '../../styles/media-queries.scss';
+
+// $icon-size: 50px;
+
+.container {
+  display: flex;
+  flex-direction: row;
+  z-index: 3;
+}
+
+.input {
+  width: 100%;
+  background-image: url('../../assets/search-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position-x: right;
+  padding: 0.5em;
+  font-size: 18px;
+  border-radius: 5px;
+  border-color: $white;
+  outline: $white;
+}
