@@ -3,7 +3,7 @@ import styles from './top.module.scss'
 
 import Search from '../search/Search'
 
-import logo from '../../assets/apple-music-logo.svg'
+import logo from '../../assets/apple-music-logo-white.png'
 
 const Top = ({ className }) => (
   <div className={`${className} ${styles.container}`}>
