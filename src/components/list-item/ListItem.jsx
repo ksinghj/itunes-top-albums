@@ -21,7 +21,7 @@ const ListItem = ({ rank, name, artist, imgSrc }) => {
     fetch(URL)
       .then(data => data.json())
       .then(res => {
-        if (res.artists == null) {
+        if (res.artists === null) {
           setArtistDetails({
             genre: 'No data',
             from: 'No data',
@@ -36,6 +36,15 @@ const ListItem = ({ rank, name, artist, imgSrc }) => {
             from: artistsData.strCountry,
             bio: artistsData.strBiographyEN,
           })
+          if (artistsData.strGenre === null || artistsData.strGenre === '') {
+            setArtistDetails({ ...artistDetails, genre: 'No data' })
+          }
+          if (artistsData.strCountry === null || artistsData.strCountry === '') {
+            setArtistDetails({ ...artistDetails, from: 'No data' })
+          }
+          if (artistsData.strBiographyEN === null || artistsData.strBiographyEN === '') {
+            setArtistDetails({ ...artistDetails, bio: 'No data' })
+          }
         }
       })
   }
@@ -53,8 +62,7 @@ const ListItem = ({ rank, name, artist, imgSrc }) => {
           onClick={() => {
             setVisible(!visible)
           }}
-          className={styles.header}
-        >
+          className={styles.header}>
           <p className={`${styles.rank} text-white`}>{rank}</p>
           <div className={styles.imgContainer}>
             <img className={styles.img} src={imgSrc || placeholder} alt="album cover art" />
@@ -73,8 +81,7 @@ const ListItem = ({ rank, name, artist, imgSrc }) => {
             getArtistDetails()
             setVisible(!visible)
           }}
-          className="text-white"
-        >
+          className="text-white">
           See
           {visible ? ' less' : ' more'}
         </button>
